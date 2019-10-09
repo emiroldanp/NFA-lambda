@@ -36,6 +36,7 @@ public class NFA<T extends Comparable> {
                     access.add(pre.get(a));
                     access.addAll(table.get(pre.get(a)).get("lmd"));    
                 }
+                System.out.println(access);
                 System.out.println("Processing " + str.charAt(i));
                 pre= access;
                 access = new ArrayList<String>();
