@@ -21,9 +21,9 @@ public class NFA<T extends Comparable> {
         table.get(q1).get(symbol).add(q2);
     }
     
-    public ArrayList strProccessing(String str, String start) {
+    public ArrayList extended(String str, String state) {
         pre = new ArrayList<String>();
-        pre.add(start);
+        pre.add(state);
         if(str == ""){
             access.addAll(table.get(pre.get(0)).get("lmd"));
         }
