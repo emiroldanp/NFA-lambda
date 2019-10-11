@@ -5,11 +5,8 @@ import javax.sound.midi.Receiver;
 
 public class Main {
     public static void main(String[] args) {
-        NFA<String> nfa = new NFA<>();
-        int index = 0;
+        NFA<String> nfa = new NFA<String>();
         String str;
-        Object value;
-        boolean visible;
 
         Scanner sc = new Scanner(System.in);
         System.out.println("File's name: ");
@@ -19,8 +16,8 @@ public class Main {
         String initial = null;
         ArrayList<String> alphabet = new ArrayList<String>();
         ArrayList<String> access = new ArrayList<String>();
-        ArrayList<String> language = new ArrayList<String>();
         ArrayList<String> last = new ArrayList<String>();
+        sc.close();
 
         alphabet.add("lmd");
         try {    
@@ -58,8 +55,7 @@ public class Main {
                     break;
                     
                     default:
-                        ArrayList <String> stringArray = new ArrayList<String>();
-                        int i=0;
+                        ArrayList<String> stringArray = new ArrayList<String>();
                         limit.useDelimiter("\\s*,|=>\\s*");
                         while(limit.hasNext()){
                             stringArray.add(limit.next());
@@ -72,7 +68,7 @@ public class Main {
                                 nfa.newTransition(stringArray.get(0),stringArray.get(1),stringArray.get(j));
                         }
                     break;  
-                    }
+                    } limit.close();
                 number++;
             }
             in.close();
@@ -80,12 +76,11 @@ public class Main {
         catch (FileNotFoundException e) {
             e.printStackTrace();
         }
-        do {
             Scanner scanner = new Scanner(System.in);
             System.out.println("Write the string: ");
             str = scanner.nextLine();
 
-            access = nfa.stringProcessing(str, initial);
+            access = nfa.extended(str, initial);
             boolean accepted = false;
 
             for( int i = 0 ; i<access.size() && !accepted ;i++){
@@ -99,11 +94,6 @@ public class Main {
             } else {
                 System.out.println("The String: "+str+" is not accepted by the language");
             }
-
-            System.out.println("Do you want to write another string: ");
-            System.out.println("Y/N");
-            String continuar = scanner.nextLine().toLowerCase();
-
-        }while(continuar.contentEquals("y"));
+            scanner.close();
     }
 }

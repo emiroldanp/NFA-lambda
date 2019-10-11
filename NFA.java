@@ -1,5 +1,7 @@
 import java.util.*;
-import java.io.*;
+import java.io.File;
+import java.io.FileNotFoundException;
+import javax.sound.midi.Receiver;
 
 public class NFA<T extends Comparable> {
     HashMap<String, HashMap<String,ArrayList<String>>> table = new HashMap<String, HashMap<String,ArrayList<String>>>();
