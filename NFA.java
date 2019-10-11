@@ -31,13 +31,10 @@ public class NFA<T extends Comparable> {
             for(i = 0; i < str.length();i++) {
                 ch = String.valueOf(str.charAt(i)) ;
                 access = new ArrayList<String>();
-                System.out.println("Processing lmd");
                 for(int a = 0; a < pre.size();a++) {
                     access.add(pre.get(a));
                     access.addAll(table.get(pre.get(a)).get("lmd"));    
                 }
-                System.out.println(access);
-                System.out.println("Processing " + str.charAt(i));
                 pre= access;
                 access = new ArrayList<String>();
                 for(j = 0; j < pre.size();j++) {
@@ -50,19 +47,15 @@ public class NFA<T extends Comparable> {
                 }
                 pre = access;
                 access = new ArrayList<String>();
-                System.out.println("Processing lmd");
                 for(int a = 0; a < pre.size();a++){
                     access.add(pre.get(a));
                     access.addAll(table.get(pre.get(a)).get("lmd"));  
                 }
                 pre = access;
-                System.out.println("access");
-                System.out.println(access);
             }
             if (access.size()>1)
                 return access;
             else {
-                System.out.println("Processing lmd");
                 pre = access;
                 access = new ArrayList<>();
                 if(pre.size() > 0){
