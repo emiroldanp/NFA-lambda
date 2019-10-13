@@ -11,16 +11,19 @@ public class Main {
         Scanner sc = new Scanner(System.in);
         System.out.println("File's name: ");
         String filesName = sc.nextLine() + ".txt";
-        File file = new File (filesName);
-        System.out.println(file.exists());
         String initial = null;
         ArrayList<String> alphabet = new ArrayList<String>();
         ArrayList<String> access = new ArrayList<String>();
         ArrayList<String> last = new ArrayList<String>();
         sc.close();
 
-        alphabet.add("lmd");
-        try {    
+        try { 
+            File file = new File (filesName);
+            if (file.exists())
+                System.out.println("File exists");
+            else   
+                System.out.println("File doesn't exists");  
+            alphabet.add("lmd"); 
             Scanner in = new Scanner(file);
             int number=1;
             while(in.hasNextLine()) {
@@ -56,14 +59,15 @@ public class Main {
                     
                     default:
                         ArrayList<String> stringArray = new ArrayList<String>();
+                        int i=0;
                         limit.useDelimiter("\\s*,|=>\\s*");
                         while(limit.hasNext()){
                             stringArray.add(limit.next());
-                        i++;
+                            i++;
                         }
                         for(int j = 2; j<stringArray.size();j++) {
-                            String s =stringArray.get(j);
-                            if((stringArray.get(1).contains("lmd")) && stringArray.get(0).contains(s)){}
+                            String sA =stringArray.get(j);
+                            if((stringArray.get(1).contains("lmd")) && stringArray.get(0).contains(sA)){}
                             else
                                 nfa.newTransition(stringArray.get(0),stringArray.get(1),stringArray.get(j));
                         }
@@ -76,9 +80,9 @@ public class Main {
         catch (FileNotFoundException e) {
             e.printStackTrace();
         }
-            Scanner scanner = new Scanner(System.in);
+            Scanner scan = new Scanner(System.in);
             System.out.println("Write the string: ");
-            str = scanner.nextLine();
+            str = scan.nextLine();
 
             access = nfa.extended(str, initial);
             boolean accepted = false;
@@ -94,6 +98,6 @@ public class Main {
             } else {
                 System.out.println("The String: "+str+" is not accepted by the language");
             }
-            scanner.close();
+            scan.close();
     }
 }
