@@ -7,7 +7,7 @@ import javax.sound.midi.Receiver;
  * @author Emiliano Roldan
  * @author Alan Mendoza
  * 
- * Java program that reads from a file the elements that define an NDFA – λ and that
+ * Java program that reads from a file the elements that define an NDFA lambda and that
  *indicates if a string is accepted by the automata.
  */
 
@@ -99,17 +99,14 @@ public class Main {
             access = nfa.extended(str, initial);
             boolean accepted = false;
 
-            for( int i = 0 ; i<access.size() && !accepted ;i++){
-                if(last.contains(access.get(i))){
-                    accepted=true;   
-                }  
+            for(int i = 0 ; i<access.size() && !accepted ;i++) {
+                if(last.contains(access.get(i)))
+                    accepted=true;
             }
-            if (accepted) {
+            if (accepted)
                 System.out.println("The String: "+str+" is accepted by the language");
-                
-            } else {
+            else 
                 System.out.println("The String: "+str+" is not accepted by the language");
-            }
             scan.close();
     }
 }

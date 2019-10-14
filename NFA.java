@@ -19,7 +19,7 @@ public class NFA<T extends Comparable> {
 
     /**
      * 
-     * @param key The state´s name
+     * @param key The state name
      */
     public void addState(String key) {
         table.put(key, new HashMap<String, ArrayList<String>>());
@@ -41,7 +41,7 @@ public class NFA<T extends Comparable> {
     /**
      * 
      * @param str The string to be analyzed by the automata
-     * @param state The NFA's initial state
+     * @param state The NFA initial state
      * @return The states that can be accessed with the extended transition function
      */
     public ArrayList extended(String str, String state) {
