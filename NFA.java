@@ -3,6 +3,11 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import javax.sound.midi.Receiver;
 
+/**
+ * 
+ * @param <T>
+ */
+
 public class NFA<T extends Comparable> {
     HashMap<String, HashMap<String,ArrayList<String>>> table = new HashMap<String, HashMap<String,ArrayList<String>>>();
     ArrayList<String> access = new ArrayList<>();
@@ -12,10 +17,20 @@ public class NFA<T extends Comparable> {
     
     public NFA() {}
 
+    /**
+     * 
+     * @param key The state´s name
+     */
     public void addState(String key) {
         table.put(key, new HashMap<String, ArrayList<String>>());
     }
 
+    /**
+     * 
+     * @param q1 The initial state of the transition
+     * @param symbol The symbol that starts the transition
+     * @param q2 The  state after the transition
+     */
     public void newTransition(String q1, String symbol, String q2 ) {
         if(table.get(q1).get(symbol) == null)
             table.get(q1).put(symbol, new ArrayList<>());
@@ -23,6 +38,12 @@ public class NFA<T extends Comparable> {
         table.get(q1).get(symbol).add(q2);
     }
     
+    /**
+     * 
+     * @param str The string to be analyzed by the automata
+     * @param state The NFA's initial state
+     * @return The states that can be accessed with the extended transition function
+     */
     public ArrayList extended(String str, String state) {
         pre = new ArrayList<String>();
         pre.add(state);

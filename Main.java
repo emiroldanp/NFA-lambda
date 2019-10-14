@@ -3,7 +3,19 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import javax.sound.midi.Receiver;
 
+/**
+ * @author Emiliano Roldan
+ * @author Alan Mendoza
+ * 
+ * Java program that reads from a file the elements that define an NDFA – λ and that
+ *indicates if a string is accepted by the automata.
+ */
+
 public class Main {
+    /**
+     * Main method
+     * @param args
+     */
     public static void main(String[] args) {
         NFA<String> nfa = new NFA<String>();
         String str;
