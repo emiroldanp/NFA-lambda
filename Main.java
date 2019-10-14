@@ -1,6 +1,7 @@
 import java.util.*;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import javax.sound.midi.Receiver;
 
 /**
@@ -92,6 +93,7 @@ public class Main {
         catch (FileNotFoundException e) {
             e.printStackTrace();
         }
+        try {
             Scanner scan = new Scanner(System.in);
             System.out.println("Write the string: ");
             str = scan.nextLine();
@@ -104,9 +106,13 @@ public class Main {
                     accepted=true;
             }
             if (accepted)
-                System.out.println("The String: "+str+" is accepted by the language");
+                System.out.println("The String: " + " " + str + " " + " is accepted by the language");
             else 
-                System.out.println("The String: "+str+" is not accepted by the language");
+                System.out.println("The String: " + " " + str + " " + " is not accepted by the language");
             scan.close();
+        } catch (Exception e) {
+            System.out.println("Error");
+        }
+            
     }
 }
